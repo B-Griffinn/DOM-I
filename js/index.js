@@ -64,16 +64,6 @@ anchor[3].style.color = 'green';
 anchor[4].style.color = 'green';
 anchor[5].style.color = 'green';
 
-
-    //.append
-const appendEl = document.createElement('a')
-console.log(appendEl)
-appendEl.textContent = 'My Prependage';
-appendEl.setAttribute('href', '#');
-appendEl.style.color = 'green';
-const myNav = document.querySelector('nav');
-myNav.prepend(appendEl)
-
     //.appendChild()
 const appendChild = document.createElement('a');
 console.log(appendChild)
@@ -83,8 +73,16 @@ appendChild.style.color = 'green';
 const myAppendChild = document.querySelector('nav');
 myAppendChild.appendChild(appendChild)
 
+    //.prepend
+const appendEl = document.createElement('a');
+const myNav = document.querySelector('nav');
+console.log(appendEl);
 
+appendEl.textContent = 'My Prependage';
+appendEl.setAttribute('href', '#');
+appendEl.style.color = 'green';
 
+myNav.prepend(appendEl)
 
 
 // Example: Update the img src for the logo
@@ -154,14 +152,27 @@ let contactP1 = document.querySelector('.contact p:nth-child(2)');
 let contactP2 = document.querySelector('.contact p:nth-child(3)');
 let contactP3 = document.querySelector('.contact p:nth-child(4)');
 
-//new element === br
-// const lineBreak = document.createElement('br');
+const contactEl = document.querySelector('.contact');
+contactEl.querySelector('h4').textContent = siteContent.contact["contact-h4"];
 
-      //textContent
-contactH4.textContent = 'Contact';
-contactP1.textContent = '123 Way 456 Street Somewhere, USA';
-contactP2.textContent = '1 (888) 888-8888';
-contactP3.textContent = 'sales@greatidea.io';
+const contactDetail = ['address', 'phone', 'email'];
+
+contactEl.querySelectorAll('p').forEach((e,i) => {
+  if (i !== 0) {
+    e.textContent = siteContent.contact[contactDetail[i]];  // Update Contact - phone and email
+  } else {
+    const address = siteContent.contact[contactDetail[i]].split(' ');
+    const stateInd = address.indexOf(address.find( e => e.includes(',')));
+    // the street address
+    const street = document.createElement('div');
+    street.textContent = address.slice(0, stateInd).join(' ');
+    e.append(street);
+    // the state address
+    const state = document.createElement('div');
+    state.textContent = address.slice(stateInd).join(' ');
+    e.append(state);
+  }
+});
 
 //Footer Selector
 let footer = document.querySelector('footer');
