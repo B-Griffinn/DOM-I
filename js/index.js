@@ -46,14 +46,46 @@ let header = document.querySelector('header');
 //NAV Selector (we only have one)
 let ourNav = document.querySelector('nav');
 
+
 //aNCHOR Selector (we only have one set of anchors)
 let anchor = document.querySelectorAll('a');
+console.log(anchor)
 anchor[0].textContent = 'Services';
 anchor[1].textContent = 'Product';
 anchor[2].textContent = 'Vision';
 anchor[3].textContent = 'Features';
 anchor[4].textContent = 'About';
 anchor[5].textContent = 'Contact';
+
+anchor[0].style.color = 'green';
+anchor[1].style.color = 'green';
+anchor[2].style.color = 'green';
+anchor[3].style.color = 'green';
+anchor[4].style.color = 'green';
+anchor[5].style.color = 'green';
+
+
+    //.append
+const appendEl = document.createElement('a')
+console.log(appendEl)
+appendEl.textContent = 'My Prependage';
+appendEl.setAttribute('href', '#');
+appendEl.style.color = 'green';
+const myNav = document.querySelector('nav');
+myNav.prepend(appendEl)
+
+    //.appendChild()
+const appendChild = document.createElement('a');
+console.log(appendChild)
+appendChild.textContent = 'My appendChild';
+appendChild.setAttribute('href', '#');
+appendChild.style.color = 'green';
+const myAppendChild = document.querySelector('nav');
+myAppendChild.appendChild(appendChild)
+
+
+
+
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
@@ -117,15 +149,20 @@ bottomContentP_3.textContent = 'Vision content elementum magna eros, ac posuere 
 
 
 //CONTACT SECTION Selector
-let contactH4 = document.querySelector('.contact h4');
-let contactP1 = document.querySelector('.contact p');
-let contactP2 = document.querySelector('.contact:nth-child(1) p');
-let contactP3 = document.querySelector('.contact:nth-child(2) p');
+let contactH4 = document.querySelector('.contact h4:nth-child(1)');
+let contactP1 = document.querySelector('.contact p:nth-child(2)');
+let contactP2 = document.querySelector('.contact p:nth-child(3)');
+let contactP3 = document.querySelector('.contact p:nth-child(4)');
+
+//new element === br
+// const lineBreak = document.createElement('br');
+
       //textContent
 contactH4.textContent = 'Contact';
 contactP1.textContent = '123 Way 456 Street Somewhere, USA';
 contactP2.textContent = '1 (888) 888-8888';
-contactP3.textContent = 'sales@greatidea.i';
+contactP3.textContent = 'sales@greatidea.io';
 
 //Footer Selector
 let footer = document.querySelector('footer');
+footer.textContent = 'Copyright Great Idea! 2018';
