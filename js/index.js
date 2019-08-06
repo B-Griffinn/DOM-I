@@ -73,7 +73,7 @@ let navImg = document.getElementById('logo-img');
 navImg.setAttribute('src', 'img/logo.png')
 ////////////////
 //Section CTA Selectors
-let ctaHeader = document.querySelector('.cta h1');
+let ctaHeader = document.querySelector('.cta h1').innerHTML=`DOM <br> Is <br> Awesome`;
 let ctaButton = document.querySelector('.cta button');
 let ctaImg = document.getElementById('cta-img');
 //CTA tests
@@ -81,7 +81,7 @@ console.log(ctaHeader);
 console.log(ctaButton);
 console.log(ctaImg);
 //CTA updated selectors
-ctaHeader.textContent = siteContent["cta"]["h1"];
+// ctaHeader.textContent = siteContent["cta"]["h1"];
 ctaButton.textContent = siteContent["cta"]["button"];
 ctaImg.setAttribute('src', 'img/header-img.png');
 //////////////
@@ -105,7 +105,7 @@ aboutP.textContent = siteContent['main-content']['about-content'];
 let midImg = document.getElementById('middle-img');
 midImg.setAttribute('src', 'img/mid-page-accent.jpg')
 /////////
-//Bottom-Content Selectors
+//Botton-Content Selectors
 let servicesHeader = document.querySelector('.bottom-content .text-content:nth-child(1) h4');
 let servicesP = document.querySelector('.bottom-content .text-content:nth-child(1) p');
 let productHeader = document.querySelector('.bottom-content .text-content:nth-child(2) h4');
@@ -168,7 +168,8 @@ contactEl.querySelectorAll('p').forEach((curr,index) => {
   }
 });
 // EVENT LISTENERS
-ctaButton.addEventListener('click', (event) => { event.target.style.backgroundColor = 'skyblue'; });
+// ctaButton.addEventListener('click', (event) => { event.target.style.backgroundColor = 'skyblue'; });
+
 
 /*
 "cta": {
@@ -206,43 +207,7 @@ ctaButton.addEventListener('click', (event) => { event.target.style.backgroundCo
 // });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Scrapped CODE
 // //aNCHOR Selector (we only have one set of anchors)
 // let anchor = document.querySelectorAll('a');
 // console.log(anchor)
@@ -374,3 +339,4 @@ ctaButton.addEventListener('click', (event) => { event.target.style.backgroundCo
 // //Footer Selector
 // let footer = document.querySelector('footer');
 // footer.textContent = 'Copyright Great Idea! 2018';
+
