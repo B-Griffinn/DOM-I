@@ -45,6 +45,29 @@ navbar[2].textContent = siteContent["nav"]["nav-item-3"];
 navbar[3].textContent = siteContent["nav"]["nav-item-4"];
 navbar[4].textContent = siteContent["nav"]["nav-item-5"];
 navbar[5].textContent = siteContent["nav"]["nav-item-6"];
+//NAV STYLES
+navbar.forEach(function(currentValue, index){
+  currentValue.textContent = siteContent['nav'][`nav-item-${index + 1}`];
+  currentValue.style.color = 'green';
+});
+//.prepend()
+const first = document.createElement('a');
+console.log(first)
+first.textContent = 'Home';
+first.setAttribute('href', '#');
+first.style.color = 'green';
+const prepend = document.querySelector('nav');
+prepend.prepend(first);
+
+//.appendChild()
+const child = document.createElement('a');
+console.log(child)
+child.textContent = 'Blog';
+child.setAttribute('href', '#');
+child.style.color = 'green';
+const childAppend = document.querySelector('nav');
+childAppend.appendChild(child);
+
 //NAV IMG
 let navImg = document.getElementById('logo-img');
 navImg.setAttribute('src', 'img/logo.png')
@@ -106,22 +129,81 @@ visionP.textContent = siteContent['main-content']['vision-content'];
 ///////
 //Contact Section Selectors
 let contactHeader = document.querySelector('.contact h4'); //** this is child 1**
-let contactAddress = document.querySelector('.contact p:nth-child(2)');
+// let contactAddress = document.querySelector('.contact p:nth-child(2)');
 let contactPhone = document.querySelector('.contact p:nth-child(3)');
 let contactEmail = document.querySelector('.contact p:nth-child(4)');
 //tests
 console.log(contactHeader)
-console.log(contactAddress)
+// console.log(contactAddress)
 console.log(contactPhone)
 console.log(contactEmail)
 //Contact Section Updated Selectors
-contactHeader.textContent = siteContent['contact']['contact-h4'];
-contactAddress.textContent = siteContent['contact']['address'];
+// contactHeader.textContent = siteContent['contact']['contact-h4'];
+// contactAddress.textContent = siteContent['contact']['address'];
 contactPhone.textContent = siteContent['contact']['phone'];
 contactEmail.textContent = siteContent['contact']['email'];
+//////
+//break-line for the address
+const contactEl = document.querySelector('.contact');
+console.log(contactEl)
+contactEl.querySelector('h4').textContent = siteContent.contact["contact-h4"];
 
+const contactDetail = ['address', 'phone', 'email'];
+console.log(contactDetail)
+contactEl.querySelectorAll('p').forEach((curr,index) => {
+  if (index !== 0) { 
+    curr.textContent = siteContent.contact[contactDetail[index]];  
+    // Update Contact - phone and email
+  } else {
+    const address = siteContent.contact[contactDetail[index]].split(' ');
+    const stateInd = address.indexOf(address.find( curr => curr.includes(',')));
+    // the street address
+    const street = document.createElement('div');
+    street.textContent = address.slice(0, stateInd).join(' ');
+    curr.append(street);
+    // the state address
+    const state = document.createElement('div');
+    state.textContent = address.slice(stateInd).join(' ');
+    curr.append(state);
+  }
+});
+// EVENT LISTENERS
+ctaButton.addEventListener('click', (event) => { event.target.style.backgroundColor = 'skyblue'; });
 
+/*
+"cta": {
+    "h1": "DOM Is Awesome",
+    "button": "Get Started",
+    "img-src": "img/header-img.png"
+  },
+*/
 
+// let ctaContainer = document.querySelector('.cta');
+// // contactEl.querySelector('h4').textContent = siteContent.contact["contact-h4"];
+// // const contactDetail = ['address', 'phone', 'email'];
+// ctaContainer.querySelector('h1').textContent = siteContent.contact['contact-h4'];
+
+// const detail = ['address', 'phone', 'email'];
+
+// ctaContainer.querySelector('p').forEach((curr, index) => {
+//   if(index !== 0){
+//     curr.textContent = siteContent.contact[detail[index]];  
+//   }else {
+//     // const address1 = siteContent.contact[detail[index]].split('');
+//     const stateInd1 = address.indexOf(address.find(curr => curr.includes(',')));
+//     // // the street address
+//       const street1 = document.createElement('div');
+//       street1.textContent = address.slice(0, stateInd1).join(' ');
+//       curr.append(street1);
+    
+
+//     // // the state address
+//     // const state = document.createElement('div');
+//     // state.textContent = address.slice(stateInd).join(' ');
+//     // curr.append(state);
+//   }
+  
+// });
 
 
 
